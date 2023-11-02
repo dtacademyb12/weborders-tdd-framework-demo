@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.Driver;
 
 import java.time.Duration;
 
@@ -27,29 +28,29 @@ public class OrderTests extends TestBase{
     ){
 
 
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
 
 
-        driver.findElement(By.linkText("Order")).click();
+        Driver.getDriver().findElement(By.linkText("Order")).click();
 
         Faker faker = new Faker();
 
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys(Keys.BACK_SPACE, "2");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys(fullname);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(street);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys(city);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys(state);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(zip);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys(Keys.BACK_SPACE, "2");
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys(fullname);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(street);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys(city);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys(state);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(zip);
 
-        driver.findElement(By.name("ctl00$MainContent$fmwOrder$cardList")).click();
+        Driver.getDriver().findElement(By.name("ctl00$MainContent$fmwOrder$cardList")).click();
 
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys(card);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox1")).sendKeys("08/29");
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys(card);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox1")).sendKeys("08/29");
 
 
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
 
-        Assert.assertTrue(driver.findElement(By.tagName("strong")).isDisplayed());
+        Assert.assertTrue( Driver.getDriver().findElement(By.tagName("strong")).isDisplayed());
 
 
 

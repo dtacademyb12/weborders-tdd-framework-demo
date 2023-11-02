@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.Driver;
 
 import java.time.Duration;
 import java.util.List;
@@ -18,10 +19,10 @@ public class AllOrdersTests extends TestBase{
 
     @Test (groups = "smoke")
     public void verifyCheckAll(){
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
-        driver.findElement(By.id("ctl00_MainContent_btnCheckAll")).click();
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_btnCheckAll")).click();
         List<WebElement> checkboxes =
-                driver.findElements(By.xpath("//input[@type='checkbox']"));
+                Driver.getDriver().findElements(By.xpath("//input[@type='checkbox']"));
 
         checkboxes.forEach(s -> Assert.assertTrue(s.isSelected()));
 

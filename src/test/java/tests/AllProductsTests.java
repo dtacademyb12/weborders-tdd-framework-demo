@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.Driver;
 import utils.SeleniumUtils;
 
 import java.time.Duration;
@@ -20,13 +21,13 @@ public class AllProductsTests extends TestBase {
     @Test (groups = "smoke")
     public  void verifyColumnNames(){
 
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
 
-        driver.findElement(By.linkText("View all products")).click();
+        Driver.getDriver().findElement(By.linkText("View all products")).click();
 
         List<String> expected = List.of("Product name", "Price", "Discount");
 
-        List<String> actual = SeleniumUtils.getElementsText(driver.findElements(By.xpath("//table[@class='ProductsTable']//th")));
+        List<String> actual = SeleniumUtils.getElementsText( Driver.getDriver().findElements(By.xpath("//table[@class='ProductsTable']//th")));
 
         Assert.assertEquals(actual, expected);
 

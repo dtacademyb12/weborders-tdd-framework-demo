@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import utils.Driver;
 
 import java.time.Duration;
 
@@ -19,9 +20,9 @@ public class LoginTests extends TestBase {
     @Test (groups = "smoke")
     public void positiveLogin(){
 
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
 
-        Assert.assertEquals(driver.getTitle(), "Web Orders");
+        Assert.assertEquals( Driver.getDriver().getTitle(), "Web Orders");
 
 
     }
@@ -32,9 +33,9 @@ public class LoginTests extends TestBase {
 
 
 
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("InvalidUser", Keys.TAB, "test", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("InvalidUser", Keys.TAB, "test", Keys.ENTER);
 
-        Assert.assertNotEquals(driver.getTitle(), "Web Orders");
+        Assert.assertNotEquals( Driver.getDriver().getTitle(), "Web Orders");
 
 
 
@@ -45,9 +46,9 @@ public class LoginTests extends TestBase {
 
 
 
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "invalid", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "invalid", Keys.ENTER);
 
-        Assert.assertNotEquals(driver.getTitle(), "Web Orders");
+        Assert.assertNotEquals( Driver.getDriver().getTitle(), "Web Orders");
 
 
 
@@ -58,9 +59,9 @@ public class LoginTests extends TestBase {
 
 
 
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("", Keys.TAB, "", Keys.ENTER);
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("", Keys.TAB, "", Keys.ENTER);
 
-        Assert.assertNotEquals(driver.getTitle(), "Web Orders");
+        Assert.assertNotEquals( Driver.getDriver().getTitle(), "Web Orders");
 
 
 
