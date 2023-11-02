@@ -7,4 +7,8 @@ TDD Framework Building Steps:
 2. Add project specific dependencies and plugins (surefire)
 3. Create a package structure
 4. Add project specific .gitignore file
+5. Add the utility classes
+6. Add the TestBase class with necessary before and after methods and extend your test classes from it
+7. Add the testng.xml file to configure a specific test run (regression.xml, smoke.xml)
+8. Configure the surefire plugin to be able to run tests (specific xml files) through command line
 

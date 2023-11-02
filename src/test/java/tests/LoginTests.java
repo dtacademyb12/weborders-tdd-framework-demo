@@ -9,42 +9,11 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 
-public class LoginTests {
+public class LoginTests extends TestBase {
 
 
-    WebDriver driver;
 
 
-    @BeforeGroups (groups = "smoke")
-    public void setup(){
-        System.out.println("Smoke tests setup DONE");
-    }
-
-    @AfterGroups (groups = "smoke")
-    public void tearDown(){
-        System.out.println("Smoke tests teardown is DONE");
-    }
-
-    @BeforeMethod (alwaysRun = true)
-   public void setupTest(){
-       driver = new ChromeDriver();
-
-       driver.manage().window().maximize();
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-       driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
-   }
-
-   @AfterMethod (alwaysRun = true)
-   public void cleanUp(){
-       driver.quit();
-   }
-
-//   @Before
-//    public void another(){
-//       System.out.println("Junit test");
-////       org.junit.Assert.assertEquals(, );
-//    }
 
 
     @Test (groups = "smoke")
@@ -52,7 +21,7 @@ public class LoginTests {
 
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
 
-        Assert.assertEquals(driver.getTitle(), "Web OrdersVGHXS");
+        Assert.assertEquals(driver.getTitle(), "Web Orders");
 
 
     }
