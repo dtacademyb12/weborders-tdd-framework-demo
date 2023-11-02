@@ -1,0 +1,10 @@
+TDD - Test Driven Development (it is NOT DDT(Data-driven testing))  - a practice of writing tests before the code
+TDD Test Automation Framework - a framework that uses TestNG or Junit to write the tests and wher you can write the functional tests before the functionality is ready
+
+TDD Framework Building Steps:
+
+1. Create a maven project
+2. Add project specific dependencies and plugins (surefire)
+3. Create a package structure
+4. Add project specific .gitignore file
+
