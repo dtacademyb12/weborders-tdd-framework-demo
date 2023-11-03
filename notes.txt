@@ -13,3 +13,15 @@ TDD Framework Building Steps:
 8. Configure the surefire plugin to be able to run tests (specific xml files) through command line
 9. Create a Driver class with singleton design pattern to prevent multiple initialization of webdriver object (browser)
 
+
+
+Design Patterns that the framework uses:
+
+Singleton - a programming design pattern that enforces the creation of the object to a single instance. In our case,
+we used it in our framework with Driver class where WebDriver object is initialized after a null check which ensures that there is never more than one WebDriver during the test execution.
+To implement a singleton design pattern to an object (WebDriver):
+- create a class with the object being declared as a private static variable
+- make the class constructor private
+- provide a factory getter method that initializes the object (WebDriver) through a null check and returns it.
+
+For this design pattern to work properly, you MUST call Driver.getDriver() everytime when you need a WebDriver from then on
