@@ -12,6 +12,8 @@ TDD Framework Building Steps:
 7. Add the testng.xml file to configure a specific test run (regression.xml, smoke.xml)
 8. Configure the surefire plugin to be able to run tests (specific xml files) through command line
 9. Create a Driver class with singleton design pattern to prevent multiple initialization of webdriver object (browser)
+10. Add the properties file with the global credentials and ConfigReader util class to read from the file
+
 
 
 
