@@ -40,9 +40,11 @@ public class LoginTests extends TestBase {
     }
     @Test
     public void negativeLoginWithInvalidPassword(){
-
+        logger.info("Logging in...");
         LoginPage loginPage = new LoginPage();
         loginPage.getUsernameField().sendKeys("Tester", Keys.TAB, "invalid", Keys.ENTER);
+
+        logger.info("Assertion of the title...");
 
         Assert.assertNotEquals( Driver.getDriver().getTitle(), "Web Orders");
 
