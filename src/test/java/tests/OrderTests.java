@@ -10,6 +10,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.AllOrdersPage;
+import pages.LoginPage;
+import pages.OrderPage;
 import utils.Driver;
 
 import java.time.Duration;
@@ -28,29 +31,10 @@ public class OrderTests extends TestBase{
     ){
 
 
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
-
-
-        Driver.getDriver().findElement(By.linkText("Order")).click();
-
-        Faker faker = new Faker();
-
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys(Keys.BACK_SPACE, "2");
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys(fullname);
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(street);
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys(city);
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys(state);
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(zip);
-
-        Driver.getDriver().findElement(By.name("ctl00$MainContent$fmwOrder$cardList")).click();
-
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys(card);
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_TextBox1")).sendKeys("08/29");
-
-
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
-
-        Assert.assertTrue( Driver.getDriver().findElement(By.tagName("strong")).isDisplayed());
+        new LoginPage().validLogin();
+        new AllOrdersPage().getOrderLink().click();
+        new OrderPage().placeOrder(fullname,street,city,state,zip,card);
+        Assert.assertTrue( new OrderPage().getConfirmMessage().isDisplayed());
 
 
 

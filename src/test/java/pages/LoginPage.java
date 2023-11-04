@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.bidi.log.Log;
 import org.openqa.selenium.support.FindBy;
@@ -28,5 +29,10 @@ public class LoginPage {
 
   public WebElement getUsernameField() {
     return usernameField;
+  }
+
+  // Page classes can also store complex behaviors as methods
+  public void validLogin(){
+    usernameField.sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
   }
 }

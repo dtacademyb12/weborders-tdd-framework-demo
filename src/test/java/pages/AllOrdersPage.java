@@ -21,7 +21,17 @@ public class AllOrdersPage {
     private WebElement checkAllButton;
 
     @FindBy(xpath = "//input[@type='checkbox']")
+//    @FindBy(css = "#dnsh")
+//    @FindBy(className = "sdgd")
+//    @FindBy(linkText = "Order")
+//    @FindBy(tagName = "strong")
     private List<WebElement> checkboxes;
+
+
+    @FindBy (linkText = "Order")
+    private WebElement orderLink;
+
+
 
 
 
