@@ -6,12 +6,14 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import utils.ConfigReader;
 import utils.Driver;
+import utils.SeleniumUtils;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -30,7 +32,7 @@ public class TestBase {
 
 
 
-    @BeforeSuite
+    @BeforeSuite (alwaysRun = true)
     public void setupReport(){
         extentReports = new ExtentReports();
         String path = System.getProperty("user.dir") + "/target/extentReports/report.html";
@@ -43,7 +45,7 @@ public class TestBase {
         extentReports.setSystemInfo("URL", ConfigReader.getProperty("url"));
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void tearDownReport(){
         extentReports.flush();
     }
@@ -60,9 +62,21 @@ public class TestBase {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void cleanUp(){
+    public void cleanUp(ITestResult testResult){
 
-        logger.info("TEST FINISHED.");
+        if(testResult.getStatus() == ITestResult.SUCCESS){
+            logger.pass("TEST PASSED. " + testResult.getName());
+        } else if (testResult.getStatus() == ITestResult.FAILURE) {
+            logger.fail("TEST FAILED. " + testResult.getName());
+            logger.fail(testResult.getThrowable());
+            // take screenshot
+            String screenshotFilePath = SeleniumUtils.getScreenshot("failedTest");
+            //attach it to the report
+            logger.addScreenCaptureFromPath(screenshotFilePath);
+        } else if (testResult.getStatus() == ITestResult.SKIP) {
+            logger.skip("TEST SKIPPED. " + testResult.getName());
+        }
+
         Driver.quitDriver();
     }
 }

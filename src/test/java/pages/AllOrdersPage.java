@@ -31,6 +31,9 @@ public class AllOrdersPage {
     @FindBy (linkText = "Order")
     private WebElement orderLink;
 
+    @FindBy (linkText = "View all products")
+    private WebElement viewAllProductsLink;
+
 
 
 
