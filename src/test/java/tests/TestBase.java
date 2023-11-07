@@ -54,7 +54,9 @@ public class TestBase {
     @BeforeMethod(alwaysRun = true)
     public void setupTest(Method method){
 
+        System.out.println("The command line browser: " + System.getProperty("browser"));
         Driver.getDriver().manage().window().maximize();
+        System.out.println(Driver.getDriver().manage().window().getSize());
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.parseLong(ConfigReader.getProperty("implicit.wait"))));
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         logger = extentReports.createTest(method.getName());

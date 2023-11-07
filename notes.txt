@@ -28,12 +28,13 @@ To implement a singleton design pattern to an object (WebDriver):
 
 For this design pattern to work properly, you MUST call Driver.getDriver() everytime when you need a WebDriver from then on
 
-
 Page Object Model - design pattern used in UI test frameworks. Implementation: for each page of the web app, create a separate
 page object class that holds the webelements and behaviors (methods).
 
 Page Factory - a class/design pattern that is used along with Page Object Model that simplifies the process. The central of it is @FindBy annotations
 and usinf PageFactory.initElemnets() method in a constructor
+
+
 
 Lombok - a library that simplifies creation of POJO(Plain old java object)s. It provides annotations such as @Data
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor. We used it to create page classes fast, without needing to add getters all the time
