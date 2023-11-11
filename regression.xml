@@ -2,6 +2,7 @@
 <suite name="Regression Test Suite">
 
 
+<!-- my branch change -->
     <test name="All UI tests">
 
        <packages>
