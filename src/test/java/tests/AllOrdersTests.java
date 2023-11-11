@@ -15,6 +15,8 @@ public class AllOrdersTests extends TestBase {
     @Test (groups = "smoke")
     public void verifyCheckAll(){
 
+
+        // testing sprint02 branch code
         new LoginPage().getUsernameField().sendKeys("Tester", Keys.TAB, "test", Keys.ENTER);
 
         AllOrdersPage allOrdersPage = new AllOrdersPage();
