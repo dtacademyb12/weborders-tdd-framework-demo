@@ -128,6 +128,8 @@ changes, team members pull the main branch code. It is VERY important to do this
 12. Repetition of Steps: Steps 5-11 are repeated for every new task.
 
 
+Git Merge Conflict - it is a conflict when a change that comes from one branch is incompatible with the change that already exist in the current branch
+
 
 
 
