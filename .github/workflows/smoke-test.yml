@@ -1,0 +1,22 @@
+name: Smoke Tests for Weborders App
+
+on:
+  push:
+    branches:
+      - main
+#      - sprint2
+#  pull_request:
+#    branches:
+#      - main
+#      - sprint
+
+jobs:
+  smoke-test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repo
+        uses: actions/checkout@v4
+      - name: Change folder to src
+        run: cd src
+      - name: Show the list of folders and files inside src
+        run: ls
